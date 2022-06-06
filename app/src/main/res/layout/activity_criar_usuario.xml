@@ -4,40 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".CriarUsuario">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        tools:layout_editor_absoluteX="58dp"
+        tools:layout_editor_absoluteY="109dp">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="156dp"
-                android:layout_height="150dp"
-                android:layout_marginTop="24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView"
-                app:srcCompat="@drawable/abc" />
-
-            <TextView
-                android:id="@+id/textViewCriaUsuario"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="56dp"
-                android:text="Criar usuário"
-                android:textColor="#216EF3"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/textViewEsqueciSenha"
-                app:layout_constraintTop_toBottomOf="@+id/btCadastrar" />
+            android:layout_height="match_parent">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout2"
@@ -45,12 +22,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="44dp"
+                android:layout_marginTop="96dp"
                 android:layout_marginEnd="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
                 app:startIconDrawable="@drawable/ic_baseline_person_24">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -67,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="64dp"
                 android:backgroundTint="#317A33"
-                android:text="Login"
+                android:text="Cadastrar"
                 android:textSize="16sp"
                 app:cornerRadius="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -95,7 +72,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint="senha"
-                    android:inputType="textPassword"
                     android:textSize="20sp"
                     tools:layout_editor_absoluteY="373dp" />
 
@@ -106,12 +82,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="56dp"
-                android:layout_marginEnd="30dp"
                 android:text="Esqueci a senha"
                 android:textColor="#216EF3"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toStartOf="@+id/textViewCriaUsuario"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btCadastrar" />
 
@@ -120,7 +94,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="44dp"
-                android:text="Login Usuário Biblioteca"
+                android:text="Cadastro Usuário"
                 android:textSize="34sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
