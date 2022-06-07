@@ -36,27 +36,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         inputEmail  = findViewById(R.id.loginEmail);
         inputSenha  = findViewById(R.id.loginSenha);
-        criarUsuario  = findViewById(R.id.textViewCriaUsuario);
+        criarUsuario  = findViewById(R.id.textViewCriarUsuario);
         recSenha  = findViewById(R.id.textViewEsqueciSenha);
-        btLogar  = findViewById(R.id.btCadastrar);
-        //progressBar  = findViewById(R.id.progressBar);
+        btLogar  = findViewById(R.id.btLogar);
+        progressBar  = findViewById(R.id.progressBar);
 
         criarUsuario.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
+
+        btLogar.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btCadastrar:
+            case R.id.btLogar:
                 logar();
                 break;
             case R.id.textViewEsqueciSenha:
                 //intent = new Intent(MainActivity.this, RecuperaSenha.class);
                 startActivity(intent);
                 break;
-            case R.id.textViewCriaUsuario:
+            case R.id.textViewCriarUsuario:
                 intent = new Intent(MainActivity.this, CriarUsuario.class);
                 startActivity(intent);
                 break;
@@ -85,14 +87,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    if(user.isEmailVerified()){
-                        intent = new Intent(MainActivity.this, UsuarioLogado.class);
-                        startActivity(intent);
-                    }
-                    else {
-                        Toast.makeText(MainActivity.this, "Confirme seu login por email", Toast.LENGTH_LONG).show();
-                        user.sendEmailVerification();
-                    }
+                    intent = new Intent(MainActivity.this, UsuarioLogado.class);
+                    startActivity(intent);
                 }
                 else {
                     Toast.makeText(MainActivity.this, "Erro ao logar", Toast.LENGTH_LONG).show();

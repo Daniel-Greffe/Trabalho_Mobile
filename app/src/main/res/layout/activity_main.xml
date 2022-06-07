@@ -26,7 +26,7 @@
                 app:srcCompat="@drawable/biblioteca" />
 
             <TextView
-                android:id="@+id/textViewCriaUsuario"
+                android:id="@+id/textViewCriarUsuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
@@ -37,7 +37,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/textViewEsqueciSenha"
-                app:layout_constraintTop_toBottomOf="@+id/btCadastrar" />
+                app:layout_constraintTop_toBottomOf="@+id/btLogar" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout2"
@@ -62,16 +62,16 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btCadastrar"
+                android:id="@+id/btLogar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="64dp"
+                android:layout_marginTop="48dp"
                 android:backgroundTint="#317A33"
                 android:text="Login"
                 android:textSize="16sp"
                 app:cornerRadius="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
 
@@ -110,10 +110,21 @@
                 android:text="Esqueci a senha"
                 android:textColor="#216EF3"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toStartOf="@+id/textViewCriaUsuario"
+                app:layout_constraintEnd_toStartOf="@+id/textViewCriarUsuario"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btCadastrar" />
+                app:layout_constraintTop_toBottomOf="@+id/btLogar" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="#317A33"
+                app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
             <TextView
                 android:id="@+id/textView"

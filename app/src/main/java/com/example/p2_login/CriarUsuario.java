@@ -27,7 +27,9 @@ public class CriarUsuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_criar_usuario);
 
-        cadastrarEmail  = findViewById(R.id.loginEmail);
+        cadastrarEmail  = findViewById(R.id.cadastrarEmail);
+        cadastrarSenha = findViewById(R.id.cadastrarSenha);
+        btCadastrar = findViewById(R.id.btCadastrar);
 
         mAuthCria = FirebaseAuth.getInstance();
 

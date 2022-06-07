@@ -31,7 +31,7 @@
                 app:startIconDrawable="@drawable/ic_baseline_person_24">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/loginEmail"
+                    android:id="@+id/cadastrarEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="e-mail"
@@ -67,7 +67,7 @@
                 app:startIconDrawable="@drawable/ic_baseline_person_24">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/loginSenha"
+                    android:id="@+id/cadastrarSenha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -76,18 +76,6 @@
                     tools:layout_editor_absoluteY="373dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/textViewEsqueciSenha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="56dp"
-                android:text="Esqueci a senha"
-                android:textColor="#216EF3"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btCadastrar" />
 
             <TextView
                 android:id="@+id/textView"
