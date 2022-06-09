@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "376178484871",
+    "firebase_url": "https://p2-login-default-rtdb.firebaseio.com",
     "project_id": "p2-login",
     "storage_bucket": "p2-login.appspot.com"
   },

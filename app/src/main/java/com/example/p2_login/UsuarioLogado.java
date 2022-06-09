@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class UsuarioLogado extends AppCompatActivity {
 
-    Button btlogout;
+    Button btlogout, btNovoLivro, btListarLivros;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +20,8 @@ public class UsuarioLogado extends AppCompatActivity {
         setContentView(R.layout.activity_usuario_logado);
 
         btlogout = findViewById(R.id.buttonLogout);
+        btNovoLivro = findViewById(R.id.btNovoLivro);
+        btListarLivros = findViewById(R.id.btListarLivros);
 
         btlogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,5 +34,18 @@ public class UsuarioLogado extends AppCompatActivity {
             }
         });
 
+        btNovoLivro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(UsuarioLogado.this, CadastroLivro.class));
+            }
+        });
+
+        btListarLivros.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(UsuarioLogado.this, ListarLivros.class));
+            }
+        });
     }
 }
