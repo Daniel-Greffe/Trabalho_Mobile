@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         criarUsuario  = findViewById(R.id.textViewCriarUsuario);
         recSenha  = findViewById(R.id.textViewEsqueciSenha);
         btLogar  = findViewById(R.id.btLogar);
-        progressBar  = findViewById(R.id.progressBar);
 
         criarUsuario.setOnClickListener(this);
 
@@ -85,19 +84,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        progressBar.setVisibility(View.VISIBLE);
         mAuth.signInWithEmailAndPassword(email, senha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    intent = new Intent(MainActivity.this, UsuarioLogado.class);
-                    startActivity(intent);
+                    if(user.isEmailVerified()){
+                        intent = new Intent(MainActivity.this, UsuarioLogado.class);
+                        startActivity(intent);
+                    }
+                    else {
+                        Toast.makeText(MainActivity.this, "Verifique conta via email.", Toast.LENGTH_LONG).show();
+                        user.sendEmailVerification();
+                    }
                 }
                 else {
                     Toast.makeText(MainActivity.this, "Erro ao logar", Toast.LENGTH_LONG).show();
                 }
-                progressBar.setVisibility(View.GONE);
             }
         });
     }

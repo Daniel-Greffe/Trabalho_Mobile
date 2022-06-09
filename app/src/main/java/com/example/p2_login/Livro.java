@@ -3,7 +3,7 @@ package com.example.p2_login;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Livro implements Parcelable {
+public class Livro implements Parcelable{
     private Long id;
     private String nome;
     private String autor;
