@@ -31,27 +31,20 @@ public class ListarLivros extends AppCompatActivity {
     Button btIrCadastro;
 
     ArrayList<Livro> livroList = new ArrayList<>();
-    ArrayList<String> livroListNomes = new ArrayList<>();
-    ArrayAdapter<String> livroArrayAdapter;
+
+    ArrayAdapter<Livro> livroArrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        iniciarFirebase();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_livros);
 
         listView = findViewById(R.id.listView);
         btIrCadastro = findViewById(R.id.btIrCadastro);
 
-        if(getIntent().getExtras() != null){
-            Livro livro = getIntent().getExtras().getParcelable("livro");
-            livroList.add(livro);
-            livroListNomes.add(livro.getNome());
-        }
-
-        livroArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, livroListNomes);
-
-        listView.setAdapter(livroArrayAdapter);
+        String palavra = "";
+        pesquisarPalavra(palavra);
 
         btIrCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,15 +53,58 @@ public class ListarLivros extends AppCompatActivity {
             }
         });
     }
-//    protected void onListItemClick(ListView l, View v, int position, long id) { //trata o click
-//        super.onListItemClick(l, v, position, id);
-//        Livro l1 = livroList.get(position);
-//
-//        //se não limpar o array, não renderiza a lista corretamente
-//        //ouvinte addValueEventListener repopula ele com add.
-//        livroList.clear();
-//
-//        databaseReference.child("Livro").child(l1.getNome()).removeValue();
-//    }
 
+    private void pesquisarPalavra(String palavra) {
+        Query query;
+
+        if (palavra.equals("")) {
+            query = databaseReference.child("Livro").orderByChild("nome");
+        }
+        else{
+            query = databaseReference.child("Livro").orderByChild("nome").
+                    startAt(palavra).endAt(palavra + "\uf8ff");
+        }
+        livroList.clear();
+
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot objDataSnapshot1: dataSnapshot.getChildren()) {
+                    Livro l = objDataSnapshot1.getValue(Livro.class);
+                    livroList.add(l);
+                }
+
+                livroArrayAdapter = new ArrayAdapter<>(ListarLivros.this,
+                        android.R.layout.simple_list_item_1, livroList);
+
+                //não esquecer do toString na model pois o arraylist é de objetos.
+                //não esquecer de definir altura para a lista no xml.
+                listView.setAdapter(livroArrayAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Livro p1 = livroList.get(i);
+
+                //se não limpar o array, não renderiza a lista corretamente
+                //ouvinte addValueEventListener repopula ele com add.
+                livroList.clear();
+
+                databaseReference.child("Livro").child(p1.getNome()).removeValue();
+
+            }
+        });
+    }
+    private void iniciarFirebase() {
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseDatabase.setPersistenceEnabled(true);
+        databaseReference = firebaseDatabase.getReference();
+    }
 }

@@ -8,7 +8,8 @@
         <entry key="app/src/main/res/layout/activity_cadastro_livro.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/activity_criar_usuario.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_listar_livros.xml" value="0.19739583333333333" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_recuperar_senha.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_usuario_logado.xml" value="0.19739583333333333" />
       </map>
     </option>
